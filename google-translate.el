@@ -23,7 +23,7 @@
 ;; * (gt-detect-language "Detect the language of this text")
 ;;   "en"
 
-;; * (gt-translate-dwin "Guess what i mean")
+;; * (gt-inteligent-translate "Guess what i mean")
 ;;   "Угадайте, что я имею в виду"
 
 ;; * (gt-translate "Hello world!" "en" "ru")
