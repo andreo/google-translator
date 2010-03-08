@@ -1,4 +1,4 @@
-Emacs module for translation text using google api.
+Emacs module for text translation using google api.
 
 The latest version:
 git://github.com/andreo/google-translator.git
