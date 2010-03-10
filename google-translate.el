@@ -18,6 +18,11 @@
 ;;  git://github.com/andreo/google-translator.git
 ;;  http://github.com/andreo/google-translator.git
 
+;; There are two dependencies url.el and json.el.
+;; url.el is part of GNU Emacs.
+;; json.el is available here:
+;;   http://cvs.savannah.gnu.org/viewvc/*checkout*/emacs/lisp/json.el?root=emacs
+
 ;; Usage:
 
 ;; * (gt-detect-language "Detect the language of this text")
