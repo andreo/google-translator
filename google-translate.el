@@ -54,6 +54,29 @@
 (require 'url)
 (require 'json)
 
+(defgroup google-translate nil
+  "This is a library for rapid text translating
+using Google AJAX Language API"
+  :version "0.1")
+
+(defcustom gt-detect-language-base-url
+  "http://ajax.googleapis.com/ajax/services/language/detect"
+  "Google AJAX Language API base url to detect language of text."
+  :type 'string
+  :group 'google-translate)
+
+(defcustom gt-translate-base-url
+  "http://ajax.googleapis.com/ajax/services/language/translate"
+  "Google AJAX Language API base url to translate text."
+  :type 'string
+  :group 'google-translate)
+
+(defcustom gt-guess-language-table
+  nil
+  "Contain information about what language to translate to."
+  :type 'plist
+  :group 'google-translate)
+
 (defun url-data (url)
   "Retrieve data, header and status of URL."
   (with-current-buffer
@@ -78,11 +101,6 @@
 
 
 
-
-(defvar gt-detect-language-base-url
-  "http://ajax.googleapis.com/ajax/services/language/detect"
-  "Google AJAX Language API base url to detect language of text.")
-
 (defun gt-make-detect-language-url (text)
   "Make url to detect language of TEXT."
   (concat gt-detect-language-base-url
@@ -97,10 +115,6 @@
     (getf (getf json :responseData) :language)))
 
 
-
-(defvar gt-translate-base-url
-  "http://ajax.googleapis.com/ajax/services/language/translate"
-  "Google AJAX Language API base url to translate text.")
 
 (defun gt-make-translate-url (text from to)
   "Make url to translate TEXT from language FROM to language TO."
@@ -151,9 +165,6 @@ HISTORY, if non-nil, specifies a history list (see `read-from-minibuffer')."
          (json (url-retrieve-json url))
          (result (getf (getf json :responseData) :translatedText)))
     (decode-coding-string result 'utf-8)))
-
-(defvar gt-guess-language-table nil
-  "Contain information about what language to translate to.")
 
 (defun gt-guess-language-to (language)
   "Guess the language i want to translate to from LANGUAGE."
